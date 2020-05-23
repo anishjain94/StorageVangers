@@ -33,8 +33,11 @@
 
 body, html {
 	height: 100%;
-	font-family: Oswald-Regular, sans-serif;
+  font-family: Oswald-Regular, sans-serif;
+  background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }
+
 
 /*---------------------------------------------*/
 a {
@@ -184,7 +187,7 @@ iframe {
   align-items: center;
   padding: 15px;
   position: relative;
-  background-color: #e6e6e6;
+  
 }
 
 .wrap-login100 {
