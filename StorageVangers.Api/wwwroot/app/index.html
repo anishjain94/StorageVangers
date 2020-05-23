@@ -50,53 +50,79 @@
       type="text/css"
       href="vendor/daterangepicker/daterangepicker.css"
     />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <!--===============================================================================================-->
+
     <style>
-      .border {
-        background-color: lightgrey;
-        width: 500px;
-        padding: 50px;
-        margin: 20px;
+      #pos {
+        margin-right: 130px;
       }
     </style>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+    <!--===============================================================================================-->
   </head>
   <body>
-    <div class="limiter">
-      <div class="container-login100">
-        <div class="wrap-login100 p-t-90 p-b-30 border">
-          <form class="login100-form validate-form">
-            <span class="login100-form-title p-b-40">
-              Sign Up
-            </span>
+    <!--Navbar -->
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">StorageVangers</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent-555"
+        aria-controls="navbarSupportedContent-555"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <div>
-              <a
-                href="/loginexternal/Google?redirectUri=/app"
-                class="btn-login-with bg1 m-b-10"
-              >
-                <i class="fa fa-google"></i>
-                Login with Google
-              </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item avatar dropdown" style="margin-right: 80px;">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdownMenuLink-55"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                id="profile"
+                src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                class="rounded-circle z-depth-0 h-5"
+                alt="avatar image"
+                style="width: 30px;"
+              />
+            </a>
 
-              <a href="#" class="btn-login-with bg2">
-                <i class="fa fa-cloud"></i>
-                Login with OnDrive
-              </a>
+            <div
+              class="dropdown-menu dropdown-menu-lg-left dropdown-secondary"
+              id="pos"
+              aria-labelledby="navbarDropdownMenuLink-30"
+              style="margin-right: 80px;"
+            >
+              <a class="dropdown-item" href="#" id="name">Action</a>
+              <a class="dropdown-item" href="/logout">Sign out</a>
             </div>
-          </form>
-        </div>
+          </li>
+        </ul>
       </div>
-    </div>
+    </nav>
 
+    <script>
+      let response = fetch("/getuserinfo")
+        .then((data) => data.json())
+        .then(
+          (jsn) => (
+            (document.getElementById("name").innerHTML = jsn.userName),
+            (document.getElementById("profile").src = jsn.avatarUrl)
+          )
+        )
+        .catch((err) => console.log(err));
+    </script>
 
-	<script>
-
-		
-	</script>
-    <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
     <script src="vendor/animsition/js/animsition.min.js"></script>
