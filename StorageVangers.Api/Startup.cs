@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Npgsql;
 using StorageVangers.Api.Data;
 using System;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace StorageVangers.Api
 {
@@ -57,7 +59,7 @@ namespace StorageVangers.Api
                 options.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
             })
-            .AddGoogle(options =>
+            .AddGoogle("Google", options =>
             {
                 var googleAuthSection = Configuration.GetSection("Authentication:Google");
                 options.ClientId = googleAuthSection["ClientId"];
@@ -98,21 +100,21 @@ namespace StorageVangers.Api
 
             app.UseRouting();
 
-            app.UseResponseCaching();
+            //app.UseResponseCaching();
 
-            app.Use(async (context, next) =>
-            {
-                context.Response.GetTypedHeaders().CacheControl =
-                    new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
-                    {
-                        Public = true,
-                        MaxAge = TimeSpan.FromSeconds(30)
-                    };
-                context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
-                    new string[] { "Accept-Encoding" };
+            //app.Use(async (context, next) =>
+            //{
+            //    context.Response.GetTypedHeaders().CacheControl =
+            //        new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+            //        {
+            //            Public = true,
+            //            MaxAge = TimeSpan.FromSeconds(30)
+            //        };
+            //    context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+            //        new string[] { "Accept-Encoding" };
 
-                await next();
-            });
+            //    await next();
+            //});
 
             //app.UseForwardedHeaders(new ForwardedHeadersOptions
             //{
