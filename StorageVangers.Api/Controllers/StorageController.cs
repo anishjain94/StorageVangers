@@ -24,5 +24,31 @@ namespace StorageVangers.Api.Controllers
                 return Unauthorized();
             }
         }
+
+        public async Task<IActionResult> GetFiles()
+        {
+            try
+            {
+                var files = await _storageService.GetFilesAsync();
+                return new JsonResult(files);
+            }
+            catch(Exception)
+            {
+                return Unauthorized();
+            }
+        }
+
+        public async Task<IActionResult> GetFilesBydId(string id)
+        {
+            try
+            {
+                var files = await _storageService.GetFilesByIdAsync(id);
+                return new JsonResult(files);
+            }
+            catch(Exception)
+            {
+                return Unauthorized();
+            }
+        }
     }
 }
