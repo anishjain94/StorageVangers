@@ -10,6 +10,10 @@ function SignIn(user) {
     if (userImgElem) {
         userImgElem.setAttribute("src", authenticatedUser.photoURL);
     }
+
+    if (window.location.pathname === "/" || window.location.pathname === "/index" || window.location.pathname === "/index.html") {
+        window.location.replace("/app");
+    }
 }
 
 function SignOut() {
@@ -137,6 +141,7 @@ if (btnSignOut) {
             .then(
                 function () {
                     SignOut();
+                    window.location.replace("/");
                 },
                 function (error) {
                     console.log(error);
