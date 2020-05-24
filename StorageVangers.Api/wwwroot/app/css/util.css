@@ -1,79 +1,81 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-	margin: 0;
-	padding: 0;
-	background-color: black;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	color: lawngreen;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: lawngreen;
 }
 
 div.driveItemCollection {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 div.driveItem {
-	padding: 0.5% 1%;
-	min-width: 290px;
-	cursor: pointer;
-	border: 1px solid lawngreen;
+  padding: 0.5% 1%;
+  min-width: 290px;
+  cursor: pointer;
+  border: 1px solid lawngreen;
 }
 
 .nav-main {
-	list-style: none;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	padding: 0 1.5rem;
-	margin-top: 1.2rem;
-	margin-bottom: 1.2rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 .nav-link {
-	text-decoration: none;
-	color: lawngreen;
+  text-decoration: none;
+  color: lawngreen;
 }
 
 .nav-brand {
-	font-size: 1.2rem;
-	margin-right: auto;
+  font-size: 1.2rem;
+  margin-right: auto;
 }
 
 .nav-link {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .nav-item > .nav-link {
-	margin-left: 1.2rem;
+  margin-left: 1.2rem;
 }
 
 .m-1 {
-	margin: 1%;
+  margin: 1%;
 }
 
 .p-1 {
-	padding: 1%;
+  padding: 1%;
 }
 
 fieldset {
-	margin: 1%;
-	border: 1px solid lawngreen;
+  margin: 1%;
+  border: 1px solid lawngreen;
 }
 
 .displayNone {
-	display: none;
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
-	div.driveItemCollection {
-		justify-content: center;
-	}
+  div.driveItemCollection {
+    justify-content: center;
+  }
 
-	div.driveItem {
-		min-width: 40%;
-	}
+  div.driveItem {
+    min-width: 40%;
+  }
 }
