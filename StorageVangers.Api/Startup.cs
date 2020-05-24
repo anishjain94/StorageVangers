@@ -116,13 +116,13 @@ namespace StorageVangers.Api
             //    await next();
             //});
 
-            //app.UseForwardedHeaders(new ForwardedHeadersOptions
-            //{
-            //    ForwardedHeaders = ForwardedHeaders.All,
-            //    RequireHeaderSymmetry = false,
-            //    ForwardLimit = null,
-            //    KnownNetworks = { new IPNetwork(IPAddress.Parse($"::ffff:{Configuration["HostIP"]}"), 104) }
-            //});
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.All,
+                RequireHeaderSymmetry = false,
+                ForwardLimit = null,
+                KnownNetworks = { new IPNetwork(IPAddress.Parse($"::ffff:{Configuration["HostIP"]}"), 104) }
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();
