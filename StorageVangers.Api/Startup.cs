@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Npgsql;
 using StorageVangers.Api.Data;
-using System;
-using System.Net;
-using System.Threading.Tasks;
+using StorageVangers.Api.Services;
 
 namespace StorageVangers.Api
 {
@@ -33,6 +29,8 @@ namespace StorageVangers.Api
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
+
+            services.AddHttpContextAccessor();
 
             var pgsqlConnectionString = Configuration["PostgreSql:ConnectionString"];
             var pgsqlDbPassword = Configuration["PostgreSql:DbPassword"];
@@ -71,6 +69,8 @@ namespace StorageVangers.Api
 
             // Configures Mvc Services
             services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            services.AddScoped<IStorageService, StorageService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -129,7 +129,7 @@ namespace StorageVangers.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute("Default", "api/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
