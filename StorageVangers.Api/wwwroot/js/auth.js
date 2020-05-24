@@ -102,17 +102,25 @@ if (btnGSignIn) {
     btnGSignIn.addEventListener("click", function () {
         firebase.auth().signInWithRedirect(googleProvider);
     });
+
+
+
 }
 
 function updateOptions(options) {
     const update = { ...options };
 
+    let customHeaders = {};
+    if (localStorage.getItem("googleAccessToken") != null && localStorage.getItem("googleRefreshToken") != null) {
+        customHeaders = {
+            GoogleAccessToken: localStorage.getItem("googleAccessToken"),
+            GoogleRefreshToken: localStorage.getItem("googleRefreshToken")
+        };
+    }
+
     update.headers = {
         ...update.headers,
-        GoogleAccessToken: localStorage.getItem("googleAccessToken"),
-        GoogleRefreshToken: localStorage.getItem("googleRefreshToken"),
-        //MicrosoftAccessToken: localStorage.microsoftAccessToken,
-        //MicrosoftfReshToken: localStorage.microsoftRefreshToken
+        ...customHeaders
     };
 
     return update;

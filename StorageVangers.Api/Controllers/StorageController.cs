@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StorageVangers.Api.Services;
 using System.Threading.Tasks;
+using System;
 
 namespace StorageVangers.Api.Controllers
 {
@@ -13,8 +14,15 @@ namespace StorageVangers.Api.Controllers
 
         public async Task<IActionResult> GetDriveInfo()
         {
-            var driveInfo = await _storageService.GetGoogleDriveInfoAsync();
-            return new JsonResult(driveInfo);
+            try
+            {
+                var driveInfo = await _storageService.GetGoogleDriveInfoAsync();
+                return new JsonResult(driveInfo);
+            }
+            catch(Exception)
+            {
+                return Unauthorized();
+            }
         }
     }
 }
