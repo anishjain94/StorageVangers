@@ -23,3 +23,5 @@ The main feature of the project will be to sort all your files and folders autom
 * [ ] Implement Plugin System
 
 > NOTE: Right now the project just emulates Google Drive Api v3 due to short time of this hackathon but we will for sure add other features very soon. Stay tuned.
+---
+[![Storage Vangers Demo](https://img.youtube.com/vi/6N1jIQ8OnqY/0.jpg)](https://www.youtube.com/watch?v=6N1jIQ8OnqY)
